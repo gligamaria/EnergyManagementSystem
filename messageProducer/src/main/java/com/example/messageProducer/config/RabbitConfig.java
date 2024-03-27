@@ -28,9 +28,9 @@ public class RabbitConfig {
     public ConnectionFactory connectionFactory() {
 
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-        connectionFactory.setUri("amqps://axbccuwn:pqNzPJmo-u7eEVf_XiQtQgRB3bTmX_of@cow.rmq2.cloudamqp.com/axbccuwn");
-        connectionFactory.setUsername("axbccuwn");
-        connectionFactory.setPassword("pqNzPJmo-u7eEVf_XiQtQgRB3bTmX_of");
+        connectionFactory.setUri("");
+        connectionFactory.setUsername("");
+        connectionFactory.setPassword("");
         connectionFactory.setPort(5671);
         connectionFactory.setVirtualHost("axbccuwn");
         return connectionFactory;
