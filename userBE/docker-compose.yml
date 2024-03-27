@@ -1,0 +1,30 @@
+﻿version: '3'
+
+services:
+  user-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: maria123
+      MYSQL_DATABASE: ds-user
+    ports:
+      - "3307:3306"
+    volumes:
+      - user-db:/var/lib/mysql
+
+  spring-boot-app:
+    image: user-be
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://user-db:3306/ds-user
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: maria123
+    ports:
+      - "8081:8081"
+    depends_on:
+      - user-db
+
+volumes:
+  user-db:

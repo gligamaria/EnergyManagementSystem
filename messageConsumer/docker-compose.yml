@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  consumption-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: maria123
+      MYSQL_DATABASE: ds-consumption
+    ports:
+      - "3309:3306"
+    volumes:
+      - consumption-db:/var/lib/mysql
+
+  spring-boot-app:
+    image: consumption-be
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://consumption-db:3306/ds-consumption
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: maria123
+    ports:
+      - "8082:8082"
+    depends_on:
+      - consumption-db
+
+volumes:
+  consumption-db:

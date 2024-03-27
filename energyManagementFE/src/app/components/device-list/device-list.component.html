@@ -1,0 +1,36 @@
+<div class="main-content mat-typography">
+  <div class="section-content section-content-p30">
+
+
+    <a *ngIf="role == '1'" routerLink="/devices/new" class="btn btn-primary" style="margin-bottom: 15px">Add device</a>
+<!--    <button (click)="show()" class="btn btn-primary">Miau</button>-->
+
+    <table class="table table-striped">
+
+      <tbody>
+
+      <tr *ngFor="let tempDevice of devices">
+
+        <td class="align-middle">
+          <div style="margin-left: 10px;">
+
+            <div style="margin-left: 10px; display: flex; flex-direction: row; align-items: baseline; justify-content: start;">
+              <h2>{{tempDevice.id}}</h2>
+            </div>
+
+          </div>
+        </td>
+
+        <td class="align-middle">
+          <a *ngIf="role == '1'" routerLink="/devices/{{ tempDevice.id }}" class="primary-btn">See Device</a>
+          <a *ngIf="role == '0'" routerLink="/devices/myDevice/{{ tempDevice.id }}" class="primary-btn">See Device</a>
+        </td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+</div>

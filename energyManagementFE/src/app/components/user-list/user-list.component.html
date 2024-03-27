@@ -1,0 +1,30 @@
+<div class="main-content mat-typography">
+  <div class="section-content section-content-p30">
+
+    <a routerLink="/users/new" class="btn btn-primary" style="margin-bottom: 15px">Add user</a>
+
+    <table class="table table-striped">
+
+      <tbody>
+
+      <tr *ngFor="let tempUser of users">
+
+        <td class="align-middle">
+          <div style="margin-left: 10px; display: flex; flex-direction: row; align-items: baseline; justify-content: start;">
+            <h2>{{tempUser.name}}</h2>
+            <h4 style="padding-left: 10px">{{tempUser.id}}</h4>
+          </div>
+        </td>
+
+        <td class="align-middle">
+          <a routerLink="/users/{{ tempUser.id }}" class="primary-btn">See User</a>
+        </td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+</div>

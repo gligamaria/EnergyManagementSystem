@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  device-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: maria123
+      MYSQL_DATABASE: ds-device
+    ports:
+      - "3308:3306"
+    volumes:
+      - device-db:/var/lib/mysql
+
+  spring-boot-app:
+    image: device-be
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://device-db:3306/ds-device
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: maria123
+    ports:
+      - "8080:8080"
+    depends_on:
+      - device-db
+
+volumes:
+  device-db:

@@ -1,0 +1,11 @@
+<div class="main-content mat-typography">
+  <div class="section-content section-content-p30">
+
+    <div *ngIf="start == false" style="padding-bottom: 10px">
+      <button class="btn btn-outline-primary" (click)="startChat()" style="width: 120px">Start Chat</button>
+    </div>
+
+    <app-message-display *ngIf="id && start" [otherUser]="id"></app-message-display>
+
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="main-content">
+
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field style="width: 500px">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="nameInputValue" name="name">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field style="width: 500px">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="emailInputValue" name="email">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field style="width: 500px">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="passwordInputValue" name="password">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field style="width: 500px">
+        <mat-label>Role</mat-label>
+        <mat-select [(ngModel)]="roleInputValue" name="role">
+          <mat-option value="admin">Admin</mat-option>
+          <mat-option value="client">Client</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-primary" style="margin-bottom: 15px">{{buttonText}}</button>
+    </div>
+
+  </form>
+
+</div>

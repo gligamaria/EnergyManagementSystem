@@ -1,0 +1,51 @@
+<div class="main-content">
+
+  <form (ngSubmit)="onSubmit()">
+
+<!--    <div>-->
+<!--      <mat-form-field style="width: 500px">-->
+<!--        <mat-label>User</mat-label>-->
+<!--        <mat-select [(ngModel)]="userInputValue" name="role">-->
+
+<!--          <mat-option value="admin">Admin</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+
+    <div>
+      <mat-form-field style="width: 500px">
+        <mat-label>User</mat-label>
+        <mat-select [(ngModel)]="userInputValue" name="user">
+          <mat-option *ngFor="let user of allUsers" [value]="user">{{user}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field style="width: 500px">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="descriptionInputValue" name="description"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field style="width: 500px">
+        <mat-label>Address</mat-label>
+        <input matInput [(ngModel)]="addressInputValue" name="address">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field style="width: 500px">
+        <mat-label>Consumption</mat-label>
+        <input matInput [(ngModel)]="consumptionInputValue" name="consumption">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-primary" style="margin-bottom: 15px">{{buttonText}}</button>
+    </div>
+
+  </form>
+
+</div>

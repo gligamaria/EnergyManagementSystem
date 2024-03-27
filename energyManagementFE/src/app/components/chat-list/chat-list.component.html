@@ -1,0 +1,21 @@
+<div class="main-content mat-typography">
+  <div class="section-content section-content-p30">
+
+<!--      <div *ngFor="let user of users" style="padding-bottom: 10px">-->
+<!--        <button class="btn btn-outline-primary" routerLink="/chat/{{user}}">{{user}}</button>-->
+<!--      </div>-->
+
+    <h3 *ngIf="users.length == 0">There are no users needing help.</h3>
+
+    <table>
+      <tr>
+        <ng-container *ngFor="let user of users">
+          <td style="width: 400px; vertical-align: top">
+            <app-message-display [otherUser]="user"></app-message-display>
+          </td>
+        </ng-container>
+      </tr>
+    </table>
+
+  </div>
+</div>

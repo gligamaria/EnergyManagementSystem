@@ -1,0 +1,73 @@
+<div class="page-wrapper">
+
+  <!-- MENU SIDEBAR-->
+  <div *ngIf="router.url !== '/login'">
+    <aside class="menu-sidebar d-none d-lg-block">
+      <div class="logo">
+          <img src="assets/corgi2.jpg" alt="energyManagement" class="img-responsive">
+      </div>
+      <div class="menu-sidebar-content js-scrollbar1">
+        <nav class="navbar-sidebar">
+          <ul class="list-unstyled navbar-list">
+            <li>
+              <a *ngIf="role && role == '1'" routerLink="/users" routerLinkActive="active-link">Users</a>
+            </li>
+            <li>
+              <a *ngIf="role && role == '1'" routerLink="/devices" routerLinkActive="active-link">Devices</a>
+            </li>
+            <li>
+              <a *ngIf="role && role == '0'" routerLink="/devices" routerLinkActive="active-link">My Devices</a>
+            </li>
+            <li>
+              <a *ngIf="role && role == '0'" routerLink="/chat" routerLinkActive="active-link">Chat</a>
+            </li>
+            <li>
+            <a *ngIf="role && role == '1'" routerLink="/chats" routerLinkActive="active-link">Chat</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  </div>
+
+  <!-- END MENU SIDEBAR-->
+
+  <!-- PAGE CONTAINER-->
+  <div class="page-container">
+
+    <!-- HEADER DESKTOP-->
+    <div *ngIf="router.url !== '/login'">
+      <header class="header-desktop">
+        <div class="section-content section-content-p30">
+          <div class="container-fluid">
+            <div class="header-wrap">
+
+              <div class="cart-area d-n">
+                <button class="au-btn-submit" style="padding-top: 10px; padding-bottom: 10px"
+                        (click)="logOut()">Log Out</button>
+              </div>
+
+            </div>
+            <div class="account-wrap"></div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <!-- END HEADER DESKTOP-->
+
+    <!-- MAIN CONTENT-->
+    <div *ngIf="authService.getAuthFromLocalStorage() == true || router.url == '/login'">
+      <router-outlet></router-outlet>
+    </div>
+
+    <div class="main-content mat-typography" *ngIf="authService.getAuthFromLocalStorage() == false && router.url !== '/login'">
+      <div class="section-content section-content-p30">
+        <h1>You must be logged in to have access to the site.</h1>
+        <button class="au-btn-submit" style="padding-top: 10px; padding-bottom: 10px"
+                routerLink="/login">Log In</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

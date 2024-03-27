@@ -1,0 +1,60 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div *ngIf="edit != true">
+      <table style="width: 100%;">
+        <tr>
+          <td>
+            <h2>{{device?.id}}</h2>
+            <hr>
+          </td>
+          <td></td>
+          </tr>
+        <tr>
+          <td>
+            <h3>Description: {{device?.description}}</h3>
+            <h3>Consumption: {{device?.consumption}}</h3>
+            <hr>
+          </td>
+          <td style="display: flex; align-items: center; justify-content: center;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <button class="btn btn-outline-primary" (click)="editDevice()" style="width: 150px; margin-bottom: 10px">Edit device</button>
+              <button class="btn btn-outline-primary" (click)="deleteDevice()" style="width: 150px">Delete device</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3>Address: {{device?.address}}</h3>
+            <mat-form-field style="margin-right: 10px">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button class="btn btn-outline-primary" (click)="start()" style="width: 150px; margin-bottom: 10px; margin-right: 10px">Start monitoring</button>
+            <button class="btn btn-outline-primary" (click)="stop()" style="width: 150px; margin-bottom: 10px; margin-right: 10px">Stop monitoring</button>
+            <a *ngIf="showNotification == true && monitoring == true" style="color: red;">
+              Max consumption reached!
+            </a>
+            <div *ngIf="showDateWarning" style="color: red;">
+              Please select a date to start monitoring.
+            </div>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div *ngIf="edit == true">
+      <app-new-device [userInputValue]="device!.userId" [descriptionInputValue]="device!.description"
+                      [consumptionInputValue]="consumption" [addressInputValue]="device!.address"
+                      [buttonText]="'Save changes'" [givenDevice]="device!"
+                      [updateDevice]= "true"></app-new-device>
+    </div>
+
+    <app-bar-chart *ngIf="this.monitoring == true" [consumptions]="this.consumptions"></app-bar-chart>
+
+  </div>
+</div>

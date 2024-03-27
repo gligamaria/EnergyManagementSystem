@@ -1,0 +1,30 @@
+    <div *ngIf="open == false">
+      <button class="btn btn-outline-primary" (click)="openChat()" style="width: 120px">Open Chat</button>
+    </div>
+
+    <div *ngIf="open == true" style="padding-bottom: 10px">
+      <button class="btn btn-outline-primary" (click)="closeChat()" style="width: 120px">Close Chat</button>
+    </div>
+
+    <div *ngIf="open == true">
+      <div *ngFor="let message of messages" (click)="handleDivClick()">
+        <div *ngIf="message.sender == id" style="text-align: right">
+          <p>{{ message.sender }}</p>
+          <p>{{ message.message }}</p>
+        </div>
+        <div *ngIf="message.sender != id" style="text-align: left">
+          <p>{{ message.sender }}</p>
+          <p>{{ message.message }}</p>
+        </div>
+        <hr>
+        <p *ngIf="message == messages.at(messages.length-1) && messageSent == true && status != 'typing'"
+           style="font-weight: bold; text-align: right">{{status}}</p>
+        <p *ngIf="message == messages.at(messages.length-1) && messageSent == true && status == 'typing'"
+           style="font-weight: bold">{{status}}</p>
+      </div>
+
+      <div style="padding: 10px">
+        <input type="text" [(ngModel)]="newMessage" (focus)="onTyping()" placeholder="Type your message">
+        <button class="btn btn-outline-primary" (click)="sendMessage()">Send</button>
+      </div>
+    </div>

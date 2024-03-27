@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  angular:
+    image: frontend
+    ports:
+      - "4200:4200"
